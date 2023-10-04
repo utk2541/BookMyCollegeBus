@@ -1,0 +1,5 @@
+[submodule "Backend"]
+	url = https://github.com/utk2541/BookMyCollegeBus_backend.git
+[submodule "Temp"]
+	path = Temp
+	url = https://github.com/utk2541/BookMyCollegeBus.git
