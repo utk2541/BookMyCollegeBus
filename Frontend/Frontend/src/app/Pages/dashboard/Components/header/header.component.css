@@ -1,0 +1,49 @@
+header {
+    background: linear-gradient(135deg, #ffffff, #f2f2f2);
+    padding: 20px; /* Increased padding for more space */
+    height: 10vh;
+    display: flex;
+    justify-content: flex-end; /* Space between for better layout with possible addition of logo or other elements on the left */
+    align-items: center; /* Vertical center alignment */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow consistent with your design */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Ensure it's above other content */
+    border-radius: 10px; /* Consistency in rounded borders */
+  }
+  
+  .header-buttons {
+    display: flex;
+    gap: 20px; /* Increased gap for more breathing room */
+    align-items: center; /* For vertical alignment */
+  }
+  
+  .header-button {
+    background-color: #28c76f;
+    color: #fff;
+    border: none;
+
+    padding: 10px 20px;
+    border-radius: 50px; /* Made it consistent with your button style */
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px; /* Consistency with your global styles */
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Added shadow similar to your global button */
+  }
+  
+  .header-button:hover {
+    background-color: #81fbb8;
+    box-shadow: 0 10px 30px rgba(40, 199, 111, 0.5); /* Added shadow for hover state */
+  }
+  
+  .header-button:focus,
+  .header-button:active {
+    outline: none;
+    box-shadow: 0 12px 35px rgba(40, 199, 111, 0.5);
+  }
+  

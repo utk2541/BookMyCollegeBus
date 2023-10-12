@@ -1,0 +1,28 @@
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+form.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 30%; /* Adjust this value based on your visual preference */
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between; /* Equal space between the buttons */
+}
+
+.btn {
+    flex: 1;  /* Makes both buttons take up equal space */
+    margin: 5px;  /* Spacing on all sides of the button */
+}

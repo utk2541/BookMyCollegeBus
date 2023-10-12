@@ -1,0 +1,6 @@
+<div class="page-container">
+  <app-header></app-header>
+  <div class="boxes-container">
+    <app-dashboard-box *ngFor="let i of schedules" (onBook) = "handleBook(i)" [schedule]="i"  ></app-dashboard-box>
+  </div>
+</div>

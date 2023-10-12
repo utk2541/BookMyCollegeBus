@@ -1,0 +1,29 @@
+<div class="dashboard-box">
+  <div class="box-header">
+    <h2>{{ schedule?.busId__busNumber}}</h2>
+  </div>
+  <div class="box-content">
+    <div class="detail">
+      <div class="detail-label">Schedule ID:</div>
+      <div class="detail-value">{{ schedule?.scheduleId }}</div>
+    </div>
+
+    <div class="detail">
+      <div class="detail-label">Available Seats:</div>
+      <div class="detail-value">{{ schedule?.availableSeats }}</div>
+    </div>
+    <div class="detail">
+        <div class="detail-label">Booking Start:</div>
+        <div class="detail-value">{{ formatDate(schedule?.BookingStart) | date:'medium' }}</div>
+      </div>
+    <div class="detail">
+      <div class="detail-label">Booking End:</div>
+      <div class="detail-value">{{ formatDate(schedule?.BookingEnd) | date:'medium' }}</div>
+    </div>
+    <div class="detail">
+      <div class="detail-label">Departure:</div>
+      <div class="detail-value">{{ formatDate(schedule?.departure)  | date:'medium' }}</div>
+    </div>
+  </div>
+  <button class="btn" (click) = "book()">Book</button>
+</div>

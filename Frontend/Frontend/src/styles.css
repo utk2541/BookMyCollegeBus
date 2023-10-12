@@ -1,0 +1,148 @@
+/* Global Styles and Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #81fbb8, #28c76f);
+  color: #333;
+  line-height: 1.8;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 400px; /* Set a minimum height to ensure the container doesn't shrink below this value */
+  padding: 30px;
+  display: flex; /* Using flex properties */
+  flex-direction: column; /* Organize child elements vertically */
+  justify-content: space-between; /* Distribute the space between child elements evenly */
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: inline-block;
+    background: #28c76f; /* Matched background color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn:hover {
+    background-color: #81fbb8;
+    box-shadow: 0 10px 30px rgba(40, 199, 111, 0.5);
+  }
+  
+  .btn:focus, .btn:active {
+    outline: none;
+    box-shadow: 0 12px 35px rgba(40, 199, 111, 0.5);
+  }
+
+.form-control {
+  margin: 20px 0; /* Margin from the sample */
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px; /* Height from the sample */
+  padding: 3px 7px; /* Padding from the sample */
+  font-size: 17px; /* Font size from the sample */
+  border: 2px solid #e2e2e2;
+  border-radius: 25px; /* Rounded from the modern design */
+  background-color: #ffffff;
+  transition: border 0.3s;
+}
+
+.form-control input:focus {
+  border-color: #28c76f;
+  box-shadow: 0 0 10px rgba(40, 199, 111, 0.3);
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+  font-weight: 500;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px; /* Height from the sample */
+}
+app-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #eee
+  ); /* Example background color */
+  padding: 10px; /* Adjust padding as needed */
+}
+
+/* Style the boxes container */
+.boxes-container {
+  max-height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 10vh; /* Adjust the margin-top to be equal to or greater than the header's height */
+}
+
+.dashboard-box,
+.booking-box {
+  width: 300px; /* Set a fixed width for the boxes */
+  height: 300px; /* Set a fixed height for the boxes */
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space evenly, pushing the button to the bottom */
+}
+
+.dashboard-box-data,
+.booking-box-data {
+  /* Style for the data/content inside the box */
+  text-align: center;
+  color: #333; /* Text color */
+  font-size: 18px; /* Text font size */
+}

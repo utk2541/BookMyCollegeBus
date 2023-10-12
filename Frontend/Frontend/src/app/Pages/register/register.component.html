@@ -1,0 +1,30 @@
+<div class="centered-container">
+  <app-alert [message]="alertMessage" *ngIf="alertMessage !== undefined "></app-alert>
+  <form class="add-form" (ngSubmit)="submit()">
+    <div class="form-control">
+      <label for="Name"> Name </label>
+      <input
+        [(ngModel)]="user.name"
+        name="name"
+        id="name"
+      />
+    </div>
+    <div class="form-control">
+      <label for="username"> Email </label>
+      <input [(ngModel)]="user.username" name="username" id="username" />
+    </div>
+    <div class="form-control">
+      <label for="password"> Password </label>
+      <input
+        [(ngModel)]="user.password"
+        name="password"
+        id="password"
+        type="password"
+      />
+    </div>
+
+    <div class="button-wrapper">
+      <input type="submit" value="Register" class="btn" />
+    </div>
+  </form>
+</div>

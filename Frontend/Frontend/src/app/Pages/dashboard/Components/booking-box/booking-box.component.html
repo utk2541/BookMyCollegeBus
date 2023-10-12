@@ -1,0 +1,18 @@
+<div class="dashboard-box">
+    <div class="box-content">
+  
+      <div class="detail">
+        <div class="detail-label">Bus Number</div>
+        <div class="detail-value">{{ booking?.scheduleId__busId__busNumber}}</div>
+      </div>
+      <div class="detail">
+          <div class="detail-label">Booking Time</div>
+          <div class="detail-value">{{ formatDate(booking?.bookingTime) | date:'medium' }}</div>
+        </div>
+      <div class="detail">
+        <div class="detail-label">Departure</div>
+        <div class="detail-value">{{ formatDate(booking?.scheduleId__departure) | date:'medium' }}</div>
+      </div>
+
+  </div>
+  
