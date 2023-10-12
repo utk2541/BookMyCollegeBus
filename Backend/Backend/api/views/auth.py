@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from rest_framework import status
 from api.serializers import UserLoginSerializer
 from api.models import User as User
 from rest_framework.permissions import BasePermission
@@ -90,10 +91,12 @@ def user_registration(request):
         serializer.isAdmin = False
         user = serializer.save()
         if user:
-            response = Response()
+            response = Response({"message" : 'user created'},status = status.HTTP_201_CREATED)
             return response
+        else :
+            return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
-    return Response(serializer.errors)
+    return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -105,7 +108,6 @@ def user_login(request):
         username = request.data['username']
         password = request.data['password']
         user = authenticate(request, username=username, password=password)
-        print(user.is_authenticated)
         if user:
             payload = {
                 'id': user.id,  
@@ -118,14 +120,14 @@ def user_login(request):
             print( datetime.utcnow()+timedelta(minutes=180))
             
             token = jwt.encode(payload=payload, key='secret', algorithm='HS256').decode('utf-8')
-            response = Response({"message" : 'user logged in'})
+            response = Response({"message" : 'user logged in','jwt' : token})
             response.set_cookie(key='jwt', value=token, httponly=True)
-            response.data = {'jwt' : token}
+
             return response
 
         else:
-            return Response({"message" : 'user doesn\'t exist'})
-    return Response({'detail': 'Invalid request method'})
+            return Response({"message" : 'invalid username or password'},status = status.HTTP_403_FORBIDDEN)
+    return Response({'message': 'Invalid request method'},status = status.HTTP_403_FORBIDDEN)
 
 
 @api_view(['POST'])

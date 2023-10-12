@@ -27,8 +27,15 @@ def allSchedules(request):
 def userBookings(request):
     id = getUserfromReq(request=request,p="id")
     user = User.objects.get(id=id)
-    userbookings = Booking.objects.filter(id=user)
-    return Response(BookingSerializer(userbookings,many = True).data)
+    userbookings = Booking.objects.select_related(
+        'scheduleId',
+        'scheduleId__busId'
+    ).filter(id=user).values(
+        'bookingTime',
+        'scheduleId__departure',
+        'scheduleId__busId__busNumber'
+    )
+    return Response(userbookings.all())
 
 @api_view(['POST'])
 @permission_classes([adminPermOnly])
@@ -55,15 +62,26 @@ def addschedule(request):
 @permission_classes([userPerm])
 def currentBuses(request):
     currTime = timezone.now()
-    openingList = Schedule.objects.filter(BookingStart__lte = currTime,BookingEnd__lte = currTime)
-    return Response(ScheduleSerializer(openingList,many = True).data)
+    openingList = Schedule.objects.select_related('busId').filter(
+        BookingStart__lte = currTime,
+        BookingEnd__gte = currTime
+    ).values(
+        'scheduleId',
+        'busId__busNumber',
+        'availableSeats',
+        'BookingStart',
+        'BookingEnd',
+        'departure'
+    ).order_by('BookingEnd')
+    
+    return Response(openingList.all())
 
 
 @api_view(['POST'])
 @permission_classes([userPerm])
 @transaction.atomic
 def book(request):
-    openingId = request.data['id']
+    openingId = request.data['scheduleId']
     id = getUserfromReq(request=request,p="id")
     user = User.objects.get(id=id)
     opening = Schedule.objects.select_for_update().get(scheduleId = openingId)

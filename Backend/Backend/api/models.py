@@ -15,19 +15,7 @@ class User(AbstractUser):
         self.isAdmin = self.isAdmin or self.is_superuser
         super(User, self).save(*args, **kwargs)
 
-    # groups = models.ManyToManyField(
-    #     'auth.Group',
-    #     related_name='custom_user_set',
-    #     blank=True,
-    #     help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
-    # )
 
-    # user_permissions = models.ManyToManyField(
-    #     'auth.Permission',
-    #     related_name='custom_user_set',
-    #     blank=True,
-    #     help_text='Specific permissions for this user.',
-    # )
 
 class Bus(models.Model):
     busId = models.AutoField(primary_key=True)
