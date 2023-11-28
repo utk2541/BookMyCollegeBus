@@ -6,3 +6,4 @@ psycopg2
 PyJWT
 gunicorn
 python-decouple
+python-dotenv
