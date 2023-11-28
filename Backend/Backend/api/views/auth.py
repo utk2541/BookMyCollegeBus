@@ -10,14 +10,14 @@ from api.serializers import UserLoginSerializer
 from api.models import User as User
 from rest_framework.permissions import BasePermission
 from rest_framework.exceptions import AuthenticationFailed
-
+from decouple import config
 
 class userPerm(BasePermission):
     def has_permission(self, request, view):
         try:
             param = request.headers.get('Authorization','no')
             token = param.encode('utf-8')
-            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+            payload = jwt.decode(token, config('SECRET_KEY'), algorithms=['HS256'])
             
         except jwt.InvalidTokenError:
             raise AuthenticationFailed('Invalid token')
@@ -51,7 +51,7 @@ class adminPermOnly(BasePermission):
             
             param = request.headers.get('Authorization','no')
             token = param.encode('utf-8')
-            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+            payload = jwt.decode(token, config('SECRET_KEY'), algorithms=['HS256'])
 
         except jwt.InvalidTokenError:
             raise AuthenticationFailed('Invalid token')
@@ -119,7 +119,7 @@ def user_login(request):
             print( datetime.utcnow())
             print( datetime.utcnow()+timedelta(minutes=180))
             
-            token = jwt.encode(payload=payload, key='secret', algorithm='HS256')
+            token = jwt.encode(payload=payload, key=config('SECRET_KEY'), algorithm='HS256')
             response = Response({"message" : 'user logged in','jwt' : token})
             response.set_cookie(key='jwt', value=token, httponly=True)
 
