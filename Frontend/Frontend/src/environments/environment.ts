@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    apiUrl: "prodUrltobeaddedlater"
+    production: true,
+    apiUrl: "https://bookmycollegebusbackend.onrender.com/"
 };
