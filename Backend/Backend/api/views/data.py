@@ -9,6 +9,7 @@ from .auth import userPerm, adminPermOnly
 from datetime import datetime
 from django.db import transaction
 from django.utils import timezone
+from decouple import config
 
 @api_view(['GET'])
 @permission_classes([userPerm])
@@ -100,7 +101,7 @@ def book(request):
 def getUserfromReq(request,p):
     tokenS = request.headers.get('Authorization','no')
     token = tokenS.encode('utf-8')
-    payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+    payload = jwt.decode(token, config('SECRET_KEY'), algorithms=['HS256'])
     param = payload.get(p)
     return param 
 
