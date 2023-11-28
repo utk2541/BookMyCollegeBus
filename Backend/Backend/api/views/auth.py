@@ -119,7 +119,7 @@ def user_login(request):
             print( datetime.utcnow())
             print( datetime.utcnow()+timedelta(minutes=180))
             
-            token = jwt.encode(payload=payload, key='secret', algorithm='HS256').decode('utf-8')
+            token = jwt.encode(payload=payload, key='secret', algorithm='HS256')
             response = Response({"message" : 'user logged in','jwt' : token})
             response.set_cookie(key='jwt', value=token, httponly=True)
 
